@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-public class Task2 {
+public class RemovingDuplicatesString {
 
     //Create a Set of names. Add a few duplicates.
     // Print the set. Then create a Map<String, Integer> of student names and their marks. Print it.

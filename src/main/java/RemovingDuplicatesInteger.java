@@ -7,7 +7,7 @@ import java.util.Set;
 /**
  * Write a program to Remove duplicates from the list
  */
-public class RemovingDuplicates {
+public class RemovingDuplicatesInteger {
 
     public static void main(String[] args) {
 
