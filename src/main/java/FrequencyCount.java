@@ -9,8 +9,11 @@ public class FrequencyCount {
     public static void main(String[] args) {
         String name = "missisippi";
         String sentence = "My name is sachin and sachin is my friends name too";
+        String[] stringArray = {"My", "name", "is", "sachin", "and", "sachin", "is", "my", "friends", "name", "too"};
         frequencyCalculationOfCharacters(name);
         frequencyCalculationofString(sentence);
+        frequencyCalculationofArray(stringArray);
+
     }
 
     public static void frequencyCalculationOfCharacters(String name) {
@@ -34,6 +37,21 @@ public class FrequencyCount {
         Map<String, Integer> stringIntegerLinkedHashMap = new LinkedHashMap<>();
 
         for (String s : sentence.split(" ")) {
+            stringIntegerLinkedHashMap.put(s, stringIntegerLinkedHashMap.getOrDefault(s, 0) + 1);
+        }
+
+        for (Map.Entry<String, Integer> map : stringIntegerLinkedHashMap.entrySet()) {
+            System.out.println("Frequency of " + map.getKey() + " is " + map.getValue());
+        }
+    }
+
+    public static void frequencyCalculationofArray(String[] sentence) {
+
+        System.out.println("---------------------------------------------------------------");
+        // Use HashMap for non sorted insertion order while LinkedHashMap for getting in sorted way
+        Map<String, Integer> stringIntegerLinkedHashMap = new LinkedHashMap<>();
+
+        for (String s : sentence) {
             stringIntegerLinkedHashMap.put(s, stringIntegerLinkedHashMap.getOrDefault(s, 0) + 1);
         }
 
