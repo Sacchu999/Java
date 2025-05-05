@@ -37,7 +37,11 @@ public class StreamTask1 {
                 new Employee("David", "Engineering", 40),
                 new Employee("Eve", "Engineering", 28)
         );
-
+        //calculate the average age
+        Double age = employees.stream().collect(Collectors.averagingDouble(Employee::getAge));
+        Double age1 = employees.stream().mapToInt(Employee::getAge).average().orElse(0);
+        System.out.println(age);
+        System.out.println(age1);
         // Group by department and count the number of employees
         employees.stream()
                 .collect(Collectors.groupingBy(Employee::getDepartment))

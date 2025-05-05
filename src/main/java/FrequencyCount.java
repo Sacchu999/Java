@@ -1,5 +1,7 @@
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Write a program to count frequency of a character
@@ -10,9 +12,11 @@ public class FrequencyCount {
         String name = "missisippi";
         String sentence = "My name is sachin and sachin is my friends name too";
         String[] stringArray = {"My", "name", "is", "sachin", "and", "sachin", "is", "my", "friends", "name", "too"};
+        List<String> stringList = List.of("My", "name", "is", "sachin", "and", "sachin", "is", "my", "friends", "name", "too");
         frequencyCalculationOfCharacters(name);
         frequencyCalculationofString(sentence);
         frequencyCalculationofArray(stringArray);
+        frequencyCalculationofStringusingStreams(stringList);
 
     }
 
@@ -58,5 +62,17 @@ public class FrequencyCount {
         for (Map.Entry<String, Integer> map : stringIntegerLinkedHashMap.entrySet()) {
             System.out.println("Frequency of " + map.getKey() + " is " + map.getValue());
         }
+    }
+
+    public static void frequencyCalculationofStringusingStreams(List<String> list) {
+
+        System.out.println("---------------------------------------------------------------");
+        // Use HashMap for non sorted insertion order while LinkedHashMap for getting in sorted way
+        Map<String, Long> stringLongMap = list.stream().collect(Collectors.groupingBy(word -> word, LinkedHashMap::new, Collectors.counting()));
+
+        stringLongMap.forEach((s, aLong) -> {
+
+            System.out.printf("Frequency of %s is %d%n", s, aLong);
+        });
     }
 }
