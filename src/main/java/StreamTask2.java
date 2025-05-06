@@ -6,7 +6,6 @@ import java.util.stream.Stream;
 
 public class StreamTask2 {
 
-
     public static void main(String[] args) {
         //Q. Find the longest string in a list of strings using Java streams:
         List<String> strings = Arrays
@@ -53,7 +52,23 @@ public class StreamTask2 {
 
         //Q. Remove duplicates from a list while preserving the order using Java streams:
         List<Integer> numbersWithDuplicates = Arrays.asList(1, 2, 3, 2, 4, 1, 5, 6, 5);
+        List<Integer> distinctList = numbersWithDuplicates.stream()
+                .distinct()
+                .toList();
+        distinctList.forEach(System.out::println);
 
+        System.out.println("-----------------------------------------------------------");
+
+        //Q. Find the kth smallest element in an array using Java streams:
+        int[] array = {4, 2, 7, 1, 5, 3, 6};
+        int k = 4;
+
+        int number = Arrays.stream(array).sorted()
+                .skip(k - 1)
+                .findFirst()
+                .orElse(-1);
+
+        System.out.printf("Kth smallest number is : %d", number);
     }
 
     public static boolean isPrime(int number) {
