@@ -1,6 +1,7 @@
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -64,14 +65,20 @@ public class FrequencyCount {
         }
     }
 
-    public static void frequencyCalculationofStringusingStreams(List<String> list) {
+    public static void frequencyCalculationofStringusingStreams(List<String> words) {
 
         System.out.println("---------------------------------------------------------------");
         // Use HashMap for non sorted insertion order while LinkedHashMap for getting in sorted way
-        Map<String, Long> stringLongMap = list.stream().collect(Collectors.groupingBy(word -> word, LinkedHashMap::new, Collectors.counting()));
+        Map<String, Long> stringLongMap = words.stream()
+                .collect(Collectors.groupingBy(word -> word, LinkedHashMap::new, Collectors.counting()));
 
+        //Easy way using stream
+        Map<String, Long> wordFrequency = words
+                .stream()
+                .collect(Collectors
+                        .groupingBy(Function.identity(), Collectors.counting())
+                );
         stringLongMap.forEach((s, aLong) -> {
-
             System.out.printf("Frequency of %s is %d%n", s, aLong);
         });
     }
