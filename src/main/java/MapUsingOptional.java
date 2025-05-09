@@ -21,7 +21,7 @@ public class MapUsingOptional {
                 .map(String::trim)
                 .filter(n -> !n.isBlank())
                 .map(String::toUpperCase)
-                .collect(Collectors.toList());
+                .toList();
 
         names.forEach(System.out::println);
     }
