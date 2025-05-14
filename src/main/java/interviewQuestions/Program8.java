@@ -24,7 +24,7 @@ class Child extends Parent {
     }
 
     public static void m2() {
-        System.out.println("in parent method m2");
+        System.out.println("in child method m2");
     }
 }
 
