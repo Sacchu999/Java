@@ -2,9 +2,11 @@ package interviewQuestions;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Program12 {
@@ -40,6 +42,31 @@ public class Program12 {
                     System.out.println(emp.getSalary()), () -> System.out.println("Not available")
             );
         });
+
+        String input = "programming";
+
+        Map<Character, Integer> characterIntegerMap = new HashMap<>();
+        for (char c : input.toCharArray()) {
+            characterIntegerMap.put(c, characterIntegerMap.getOrDefault(c, 0) + 1);
+        }
+        characterIntegerMap.forEach((character, integer) -> {
+            //   System.out.printf("Character : %c%n Number of times : %d", character, integer);
+        });
+
+        System.out.println(streamExample(input));
+
+        List<String> list = Arrays.asList("Sachin", "Nitin", "Manesh", "Pankaj");
+
+    }
+
+    public static Map<Character, Long> streamExample(String input) {
+        return input.chars()
+                .mapToObj(c -> (char) c)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        //.entrySet()
+        //.stream()
+        //.filter(e -> e.getValue() > 1)
+        //.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 }
 
